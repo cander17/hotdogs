@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Joe's Hotdogs</title>
+
+      <style>
+        * {
+          box-sizing: border-box;
+        }
+        .header {
+            text-align: center;
+             border-style: solid;
+             background-color: #CFDAD1;
+             font-size: 20pt;
+        }
+        .food {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          height: 300px;
+          background-color: #CFDAD1;
+          border-style: solid;
+        }
+        .money {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          height: 300px;
+          background-color: #A2DDAD;
+          border-style: solid;
+        }
+
+        .table:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+
+        /* makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .food {
+            width: 100%;
+          }
+          .money {
+            width: 100%;
+          }
+        }
+        </style>
+   </head>
+
+   <body>
+     <h1> Joe's Hotdogs Online Order</h1>
+     <script>
+         var hotdogs = prompt('How many hot dogs would you like to order?');
+         var fries = prompt('How many fries would you like to order?');
+         var drinks = prompt('How many drinks would you like to order?');
+         var subtotal = (hotdogs * 3.25) + (fries * 2) + (drinks * 1.5);
+         var discount = false;
+         var discountval = 0;
+         var tax;
+         if (subtotal >= 20) {
+             discount = true;
+             discountval = subtotal * .1;
+         }
+         tax = .0625 * (subtotal - discountval);
+         var total = (subtotal - discountval) + tax;
+     </script>
+
+     <div class="header">
+         <p> Your order information:  </p>
+     </div>
+
+     <div class="table">
+         <div class="food">
+             <p> hotdogs (
+                 <script>
+                 document.write(hotdogs);
+                 </script>
+                 )
+            <br>
+            fries (
+                <script>
+                    document.write(fries);
+                </script>
+                )
+            <br>
+            drinks (
+                <script>
+                    document.write(drinks);
+                </script>
+                )
+            </p>
+        </div>
+        <div class="money">
+            <p>
+                Subtotal:
+                <script>
+                    document.write("$" + subtotal.toFixed(2));
+                </script>
+                <br>
+                Discount:
+                <script>
+                if (discount == true) {
+                    document.write("$" + discountval.toFixed(2));
+                }
+                else {
+                    document.write("$0.00");
+                }
+                </script>
+                <br>
+                Tax:
+                <script>
+                    document.write("$" + tax.toFixed(2));
+                </script>
+                <br>
+                Total:
+                <script>
+                    document.write("$" + total.toFixed(2));
+                </script>
+                <br>
+            </p>
+        </div>
+    </div>
+   </body>
+
+</html>
